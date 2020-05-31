@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manager carti</title>
+</head>
+<body>
+	<div align="center">
+	<h1> Manager carti</h1>
+	<a href="new">Adauga o carte</a>
+	<br></br>
+		<table border="1" >
+			<thead>
+				<tr>
+					<th>Id carte</th>
+					<th>Titlu</th>
+					<th>Autor</th>
+					<th>Numar pagini</th>
+					<th>Pret</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+            <tr th:each="carte : ${listBooks}">
+                <td th:text="${carte.id_carte}">Id carte</td>
+                <td th:text="${carte.titlu}">Titlu</td>
+                <td th:text="${carte.autor}">Autor</td>
+                <td th:text="${carte.nr_pagini}">Numar pagini</td>
+                <td th:text="${carte.pret}">Pret</td>
+                <td>                 
+                    <a th:href="@{/edit/{id}(id=${carte.id_carte})}">Edit</a>
+                    <a th:href="@{/delete/{id}(id=${carte.id_carte})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+		</table>
+	</div>
+</body>
+</html>
